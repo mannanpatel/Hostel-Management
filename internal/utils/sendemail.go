@@ -3,14 +3,15 @@ package utils
 import (
 	"fmt"
 	"net/smtp"
+	"os"
 )
 
 func SendEmail(to, subject, body string) error {
 	// Set up authentication information.
-	smtpHost := "smtp.gmail.com"        // Replace with your SMTP server
-	smtpPort := "587"                   // Replace with your SMTP port (587 or 465 for SSL)
-	smtpUser := "tarde.manan@gmail.com" // Replace with your email
-	smtpPass := "gkiwgcjgndaioefn"      // Replace with your email password
+	smtpHost := os.Getenv("smtpEmailHost") // Replace with your SMTP server
+	smtpPort := os.Getenv("smtpEmailPort") // Replace with your SMTP port (587 or 465 for SSL)
+	smtpUser := os.Getenv("smtpUserEmail") // Replace with your email
+	smtpPass := os.Getenv("smtpuserPass")  // Replace with your email password
 
 	auth := smtp.PlainAuth("", smtpUser, smtpPass, smtpHost)
 
